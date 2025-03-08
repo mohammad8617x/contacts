@@ -6,37 +6,30 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/head_item"
+        android:id="@+id/fullname_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:padding="9dp"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="@+id/head"
+        app:layout_constraintStart_toEndOf="@+id/head"
+        app:layout_constraintTop_toTopOf="@id/head"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Text" />
+
+    <TextView
+        android:id="@+id/head"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/head_item_exam"
-        android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:textColor="#101010"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/fullname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="T" />
 
-    <TextView
-        android:id="@+id/fullname"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:paddingTop="8dp"
-        android:text="text"
-        android:textColor="#0D0D0D"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/head_item"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/head_item"
-        app:layout_constraintTop_toTopOf="@+id/head_item"
-        tools:text="Text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
