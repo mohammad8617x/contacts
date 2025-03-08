@@ -24,7 +24,7 @@ binding.btnadditem.setImageResource(R.drawable.baseline_add_white_24)
         adaptor = Adaptor(arrayListOf(
             Model("mohammad"),
             Model("hasan")
-        ))
+        ),binding.textfullname,binding.btnadditem)
 
         binding.items.adapter = adaptor
         binding.items.layoutManager =LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)

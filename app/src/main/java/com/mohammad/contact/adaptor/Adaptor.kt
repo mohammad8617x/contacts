@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mohammad.contact.R
 import com.mohammad.contact.model.Model
 
-class Adaptor (val data: ArrayList<Model>): RecyclerView.Adapter<Adaptor.ContantHolder>() {
+class Adaptor (val data: ArrayList<Model>,val textfullname: EditText,val btn_add: ImageButton): RecyclerView.Adapter<Adaptor.ContantHolder>() {
+    var edtposition = -1
     fun addNewContact(name: String){
         data.add(0,Model(name))
-        notifyItemInserted(0)}
+        notifyItemInserted(0)
+    notifyItemRangeChanged(0,data.size)}
     inner class ContantHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val fullnameTV= itemView.findViewById<TextView>(R.id.fullname_item)
         val headTV = itemView.findViewById<TextView>(R.id.head)
@@ -26,9 +28,20 @@ class Adaptor (val data: ArrayList<Model>): RecyclerView.Adapter<Adaptor.Contant
                     Toast.LENGTH_SHORT).show()
                 data.removeAt(position)
             notifyItemRemoved(position)
-            notifyItemRangeChanged(position,data.count())
-
+            notifyItemRangeChanged(position,data.size)
             }
+            itemView.setOnLongClickListener {
+                btn_add.setImageResource(R.drawable.baseline_done_24)
+                textfullname.setText(data.get(position).fullname.toString())
+                edtposition = position
+                btn_add.setOnClickListener { btn_add.setImageResource(R.drawable.baseline_add_white_24)
+                    data.set(edtposition, Model(textfullname.text.toString()))
+                    textfullname.setText("")
+                    notifyItemChanged(edtposition)
+                    edtposition = -1
+                }
+                true }
+
 
         }
 
@@ -51,7 +64,7 @@ class Adaptor (val data: ArrayList<Model>): RecyclerView.Adapter<Adaptor.Contant
     }
 
     override fun getItemCount(): Int{
-        return data.count()
+        return data.size
     }
 
 
